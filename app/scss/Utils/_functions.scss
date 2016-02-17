@@ -1,0 +1,4 @@
+@function vr($breakpoint,$amount){
+  $vr : map-get($breakpoint, baselineheight) * $amount;
+  @return $vr;
+}

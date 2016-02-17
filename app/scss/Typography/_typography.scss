@@ -1,0 +1,273 @@
+body{
+  font-family: 'Source Sans Pro';
+}
+@include breakpoint(xsmall) {
+  body { font-size:100%; }
+}
+@include breakpoint(small) {
+  body { font-size:110%; }
+}
+@include breakpoint(midium) {
+  body { font-size:120%; }
+}
+
+
+@mixin fontsize($breakpoint,$mod){
+  @if $mod != 0{
+  font-size: round(map-get($breakpoint,basefontsize) * pow(map-get($breakpoint, modscale),$mod));
+  }
+  @if $mod == 0{
+  font-size: map-get($breakpoint,basefontsize);
+  }
+  
+}
+
+@mixin lineheight($breakpoint,$expo){
+  line-height: map-get($breakpoint,baselineheight)*$expo;
+} 
+
+@mixin typography($breakpoint, $mod, $lineheight){
+  @include fontsize($breakpoint, $mod);
+  @include lineheight($breakpoint, $lineheight)
+}
+
+@mixin before($breakpoint,$beforesize){
+  &:before{
+    content:'';
+    display: inline-block;
+    vertical-align: baseline;
+    height: map-get($breakpoint, baselineheight)*$beforesize;
+  }
+}
+
+@mixin after($breakpoint,$align,$aftersize){
+  &:after{
+    content:'';
+    display: inline-block;
+    vertical-align: map-get($breakpoint, baselineheight)*$align;
+    height: map-get($breakpoint, baselineheight)*$aftersize;
+  }
+}
+
+@mixin typefix($breakpoint, $beforesize, $align, $aftersize){
+  @include before($breakpoint, $beforesize);
+  @include after($breakpoint,$align,$aftersize)
+}
+
+@mixin topfix($breakpoint, $num){
+  margin-top: map-get($breakpoint, baselineheight) * $num * -1;
+}
+
+@mixin bottomfix($breakpoint, $num){
+  margin-bottom: map-get($breakpoint, baselineheight) * $num * -1;
+}
+
+@include breakpoint(xsmall) {
+  h1{
+    @include typography($xsmall, 6, 2);
+    @include typefix($xsmall, 2, -1, 1)
+  }
+  h2{
+    @include typography($xsmall, 5, 2);
+    @include typefix($xsmall, 2, -1, 1)
+  }
+  h3{
+    @include typography($xsmall, 4, 2);
+    @include typefix($xsmall, 2, -1, 1)
+    @include topfix($xsmall, 1)
+  }
+  h4{
+    @include typography($xsmall, 3, 2);
+    @include typefix($xsmall, 2, -1, 1);
+    @include topfix($xsmall, 1)
+    @include bottomfix($xsmall, 1)
+    }
+  h5{
+    @include typography($xsmall, 2, 1);
+    @include typefix($xsmall, 1, -1, 1);
+    @include bottomfix($xsmall, 1)
+    }
+  h6{
+    @include typography($xsmall, 1, 1);
+    @include typefix($xsmall, 1, -1, 1);
+    @include bottomfix($xsmall, 1);
+  }
+  p{
+    @include typography($xsmall, 0, 1);
+    @include typefix($xsmall, 1, -1, 1)
+  }
+  .psmall{
+    @include fontsize($xsmall, -1);
+    @include lineheight($xsmall, .75);
+    @include typefix($xsmall, 1, -1, 1)
+  }
+}
+
+@include breakpoint(midium) {
+  body { 
+    font-size:130%;
+  }
+  h1 {
+    @include typography($midium, 6, 3);
+    @include typefix($midium, 3, -1, 1)
+  }
+  h2 {
+    @include typography($midium, 5, 3);
+    @include typefix($midium, 3, -1, 1)
+  }
+  h3 {
+    @include typography($midium, 4, 2);
+    @include typefix($midium, 2, -1, 1)
+  }
+  h4{
+    @include typography($midium, 3, 2);
+    @include typefix($midium, 2, -1, 1)
+  }
+  h5{
+    @include typography($midium, 2, 2);
+    @include typefix($midium, 2, -1, 1);
+  }
+  h6{
+    @include typography($midium, 1, 1);
+    @include typefix($midium, 2, -1, 1)
+  }
+  p{
+    @include typography($midium, 0, 1);
+    @include typefix($midium, 1, -1, 1)
+  }
+  .psmall{
+    @include fontsize($midium, -1);
+    @include lineheight($midium, 2/3);
+    @include typefix($midium, 1, -1, 1)
+  }
+
+}
+
+@include breakpoint(large) {
+  body { 
+    font-size:130%;
+  }
+  h1 {
+    @include typography($large, 6, 3);
+    @include typefix($large, 3, -1, 1)
+  }
+  h2 {
+    @include typography($large, 5, 3);
+    @include typefix($large, 3, -1, 1)
+  }
+  h3 {
+    @include typography($large, 4, 2);
+    @include typefix($large, 2, -1, 1)
+  }
+  h4{
+    @include typography($large, 3, 2);
+    @include typefix($large, 2, -1, 1)
+  }
+  h5{
+    @include typography($large, 2, 2);
+    @include typefix($large, 2, -1, 1);
+  }
+  h6{
+    @include typography($large, 1, 1);
+    @include typefix($large, 2, -1, 1)
+  }
+  p{
+    @include typography($large, 0, 1);
+    @include typefix($large, 1, -1, 1)
+  }
+  .psmall{
+    @include fontsize($large, -1);
+    @include lineheight($large, 2/3);
+    @include typefix($large, 1, -1, 1)
+  }
+}
+
+// h1{
+  
+//   @include breakpoint(small) {
+//     @include typography($small, 6, 3);
+//     @include typefix($small, 3, -1, 1)
+//   }
+//   @include breakpoint(midium) {
+//     @include typography($midium, 6, 3);
+//     @include typefix($midium, 3, -1, 1)
+//   }
+  
+// }
+
+// h2{
+  
+//   @include breakpoint(small) {
+//     @include typography($small, 5, 3);
+//     @include typefix($small, 2, -1, 1)
+//   }
+//   @include breakpoint(midium) {
+//     @include typography($midium, 5, 3);
+//     @include typefix($midium, 3, -1, 1)
+//   }
+  
+// }
+
+// h3{
+  
+//   @include breakpoint(small) {
+//     @include typography($small, 4, 3);
+//     @include typefix($small, 2, -1, 1)
+//   }
+//   @include breakpoint(midium) {
+//     @include typography($midium, 4, 3);
+//     @include typefix($midium, 3, -1, 1)
+//   }
+  
+// }
+
+// h4{
+  
+//   @include breakpoint(small) {
+//     @include typography($small, 3, 3);
+//     @include typefix($small, 2, -1, 1)
+//   }
+//   @include breakpoint(midium) {
+//     @include typography($midium, 3, 3);
+//     @include typefix($midium, 3, -1, 1)
+//   }
+// }
+  
+// h5{
+  
+//   @include breakpoint(small) {
+//     @include typography($small, 2, 3);
+//     @include typefix($small, 2, -1, 1)
+//   }
+//   @include breakpoint(midium) {
+//     @include typography($midium, 2, 3);
+//     @include typefix($midium, 3, -1, 1)
+//   }
+ 
+// }
+
+// h6{
+  
+//   @include breakpoint(small) {
+//     @include typography($small, 1, 3);
+//     @include typefix($small, 2, -1, 1)
+//   }
+//   @include breakpoint(midium) {
+//     @include typography($midium, 1, 3);
+//     @include typefix($midium, 3, -1, 1)
+//   }
+// }
+
+// p{
+  
+//   @include breakpoint(small) {
+//     @include typography($small, 0, 3);
+//     @include typefix($small, 2, -1, 1)
+//   }
+//   @include breakpoint(midium) {
+//     @include typography($midium, 0, 3);
+//     @include typefix($midium, 3, -1, 1)
+//   }
+  
+// }
+

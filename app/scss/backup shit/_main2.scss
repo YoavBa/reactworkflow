@@ -1,0 +1,95 @@
+$background:white;
+$colorstep: rgba(255,255,255,0.25);
+$SlotColor: rgba(255,255,255,0.5);
+$border: 1px solid black;
+
+$unit : 20px;
+
+*{
+  margin:0;
+  padding:0;
+}
+
+body{
+  background-color: $background;
+  margin-top: 0;
+  padding:0;
+  // padding:$unit*0.5;
+  // background-image: url("../app/pics/grid.png");
+
+}
+#Main{
+  // background-color: $colorstep;
+  
+  width:640px;
+  // display: flex;
+  height:calc(100vh - 20px);
+}
+
+#Menu{
+  background-color: $colorstep;
+  border: $border;
+  margin:$unit*0.25;
+  width:$unit*10;
+  display: flex;
+  flex-direction: column;
+}
+
+#User{
+
+}
+
+#MenuItem{
+  background-color: $colorstep;
+  border: $border;
+  height:$unit*3;
+  margin:$unit*0.25;
+  margin-bottom: 0;
+  padding:$unit;
+  
+  
+  line-height: 60px;
+  box-sizing: border-box;
+  h6{
+    font-size: 16px;
+    
+    line-height: 20px;
+  }
+}
+
+#AddItem{
+  background-color: $colorstep;
+  border: $border;
+  height:$unit*3;
+  margin:$unit*0.25;
+  margin-bottom: 0;
+  padding:$unit*0.25;
+  
+  line-height: 60px;
+  box-sizing: border-box;
+  display: flex;
+  input{
+    background-color: $colorstep;
+    border: $border;
+    width:$unit*6.25;
+    margin-right: $unit*0.25;
+    padding:$unit*0.25;
+    box-sizing: border-box;
+  }
+  button{
+    background-color: $colorstep;
+    border: $border;
+    width:$unit*2.5;
+    height:100%;
+    // border-radius: 50%;
+  }
+}
+
+
+#content{
+  background-color: $colorstep;
+  border: $border;
+  margin: $unit*0.25;
+  margin-left: 0;
+  flex-grow:1;
+}

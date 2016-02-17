@@ -1,0 +1,39 @@
+$xsmall : (
+  basefontsize : 16px,
+  baselineheight : 24px,
+  modscale : 1.2,
+  mediamin : 0px,
+  mediamax : 479px
+  );
+
+$small : (
+  basefontsize : 18px,
+  baselineheight : 28px,
+  modscale : 1.15,
+  mediamin : 480px,
+  mediamax : 719px
+  );
+
+$midium : (
+  basefontsize : 18px,
+  baselineheight : 28px,
+  modscale : 1.3,
+  mediamin : 720px,
+  mediamax : 1920px
+  );
+
+$midium-retina: (
+  basefontsize : 20px,
+  baselineheight : 28px,
+  modscale : 1.2,
+  mediamin : 720px,
+  mediamax : 1920px
+  );
+
+$large : (
+  basefontsize : 20px,
+  baselineheight : 30px,
+  modscale : 1.305,
+  mediamin : 1920px,
+  mediamax : 2000px
+  );

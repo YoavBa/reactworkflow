@@ -1,0 +1,59 @@
+@mixin griddebug( $line-height:24 ,$min:1,$max:2 ) {
+
+    position: relative;
+
+    &:after {
+        position: absolute;
+        width: auto;
+        height: auto;
+        z-index: 9999;
+        content: '';
+        display: block;
+        pointer-events: none;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: url(http://basehold.it/image.php?height=#{$line-height}) repeat top left;
+    }
+
+    &:active:after {
+        display: none;
+    }
+
+    &:before{
+      content: "#{$line-height} baseline | breakpoint: #{$min} - #{$max}";
+      position:fixed;
+      right:0;
+      bottom: 80px;
+      background: blue;
+      color:white;
+      padding:5px;
+      
+    }
+
+}
+
+
+html{
+  @include breakpoint(xsmall) {
+    @include griddebug(map-get($xsmall, baselineheight),map-get($xsmall,mediamin),map-get($xsmall,mediamax));
+  }
+  @include breakpoint(small) {
+    @include griddebug(map-get($small, baselineheight),map-get($small,mediamin),map-get($small,mediamax));
+  }
+  @include breakpoint(midium) {
+    @include griddebug(map-get($midium, baselineheight),map-get($midium,mediamin),map-get($midium,mediamax));
+  }
+  @include breakpoint(large) {
+    @include griddebug(map-get($large, baselineheight),map-get($large,mediamin),map-get($large,mediamax));
+
+  }
+}
+
+.wrapper{
+  width: 1770px;
+  min-height: 100vh;
+  margin: 0 auto;
+  // background: url("../app/pics/grid1.png") repeat top left;
+}

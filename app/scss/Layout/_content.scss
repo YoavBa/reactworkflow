@@ -1,0 +1,22 @@
+.content {
+  min-height: 100vh;
+  margin: 0 auto;
+  @include breakpoint(xsmall) {
+    margin: vr($xsmall,1);
+  }
+  @include breakpoint(small) {
+    margin-top: vr($small,2);
+    width:60%;
+  }
+  @include breakpoint(midium) {
+    width:420px;
+    margin-top: vr($midium,2);
+  }
+  @include breakpoint(midium-retina) {
+    width:840px;
+  }
+  @include breakpoint(large) {
+    width:690px;
+    margin-top: vr($large,2);
+  }
+}

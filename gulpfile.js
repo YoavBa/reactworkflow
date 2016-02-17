@@ -7,7 +7,13 @@ var browserSync = require('browser-sync')
 var sass = require('gulp-sass')
 var cssmin = require('gulp-minify-css')
 var sourcemaps = require('gulp-sourcemaps')
+
+//postcss stuff
 var autoprefixer = require('gulp-autoprefixer')
+var postcss = require('gulp-postcss')
+var myplugin = require('postcss-myplugin')
+var lost = require ('lost')
+var postcssverticalrhythm = require('postcss-vertical-rhythm')
 
 //js stuff
 var browserify = require('browserify')
@@ -27,13 +33,18 @@ gulp.task('browserSync', function() {
   });
 });
 
+var processors = [
+  // lost,
+  // postcssverticalrhythm,
+  autoprefixer
+];
+
 gulp.task('sass', function() {
   return gulp.src('app/scss/**/*.+(scss|sass)')
     .pipe(sourcemaps.init())
-    .pipe(sass())
-    .pipe(autoprefixer())
+    .pipe(sass().on('error', errorHandler))
+    .pipe(postcss(processors).on('error', errorHandler))
     .pipe(sourcemaps.write())
-    .on('error', console.log)
     .pipe(gulp.dest('dist'))
     .pipe(browserSync.reload({
       stream: true
@@ -48,8 +59,14 @@ gulp.task('js', function() {
   .pipe(gulp.dest('dist'));
 })
 
+function errorHandler(err) {
+console.log(err.toString());
+this.emit('end');
+}
+
 gulp.task('watch', ['browserSync', 'sass', 'js'], function() {
   gulp.watch('app/scss/**/*.+(scss|sass)', ['sass']);
   gulp.watch('app/js/**/*.+(js|jsx)', ['js', browserSync.reload]);
+  gulp.watch('app/dist/temp.js', [browserSync.reload]);
   gulp.watch('index.html', [browserSync.reload]);
 });

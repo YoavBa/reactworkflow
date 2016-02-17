@@ -1,0 +1,56 @@
+@mixin breakpoint($class) {
+  @if $class == xsmall {
+    @media screen and (min-width: map-get($xsmall, mediamin)) and (max-width: map-get($xsmall, mediamax)) { @content; }
+  }
+ 
+  @else if $class == small {
+    @media screen and (min-width: map-get($small, mediamin)) and ( max-width: map-get($small, mediamax)) { @content; }
+  }
+ 
+  @else if $class == midium {
+    @media screen and (min-width: map-get($midium, mediamin)) and ( max-width: map-get($midium, mediamax)) { @content; }
+  }
+ 
+  @else if $class == midium-retina {
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: map-get($midium-retina, mediamin)),
+    only screen and (   min--moz-device-pixel-ratio: 2) and (min-width: map-get($midium-retina, mediamin)),
+    only screen and (     -o-min-device-pixel-ratio: 2/1)and (min-width: map-get($midium-retina, mediamin)),
+    only screen and (        min-device-pixel-ratio: 2)  and (min-width: map-get($midium-retina, mediamin)),
+    only screen and (             min-resolution: 192dpi) and (min-width: map-get($midium-retina, mediamin)),
+    only screen and (             in-resolution: 2dppx)  and (min-width: map-get($midium-retina, mediamin)) { 
+    @content;
+    } 
+  }
+
+  @else if $class == large {
+    @media screen and (min-width: map-get($large, mediamin)) and ( max-width: map-get($large, mediamax)) { @content; }
+  }
+ 
+  @else {
+    @warn "Breakpoint mixin supports: xsmall, small, midium, midium-retina, large";
+  }
+}
+
+
+// @mixin breakpoint($class) {
+//   @if $class == xsmall {
+//     @media screen and (min-width: 0px) and (max-width: 479px) { @content; }
+//   }
+ 
+//   @else if $class == small {
+//     @media screen and (min-width: 480px) and ( max-width: 959px) { @content; }
+//   }
+ 
+//   @else if $class == midium {
+//     @media screen and (min-width: 960px) and (max-width: 1299px) { @content; }
+//   }
+ 
+//   @else if $class == large {
+//     @media screen and (min-width: 1300px) and (max-width: 2000px) { @content; }
+//   }
+ 
+//   @else {
+//     @warn "Breakpoint mixin supports: xsmall, small, midium, large";
+//   }
+// }

@@ -1,0 +1,21 @@
+.wrapper {
+  margin: 0 auto;
+  @include breakpoint(xsmall) {
+   
+  }
+  @include breakpoint(small) {
+    
+  }
+  @include breakpoint(midium) {
+    width:644px;
+    // background:skyblue;
+  }
+  // @include breakpoint(midium-retina) {
+  //   width:1288px;
+  //   // background:pink;
+  // }
+  @include breakpoint(large) {
+    min-width: 1770px;
+    // background: red;
+  }
+}
