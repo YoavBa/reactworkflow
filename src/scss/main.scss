@@ -1,0 +1,40 @@
+// @import 'utils/gridsettings';
+// @import 'utils/breakpoints';
+// @import 'utils/functions';
+// @import 'utils/math';
+
+// @import 'vendors/..';
+
+// @import 'base/normalize';
+
+
+// @import 'typography/fonts';
+// @import 'typography/typeutil';
+// @import 'typography/typography';
+// @import 'typography/baseholdit';
+
+// @import 'layout/grid';
+// @import 'layout/wrapper';
+// @import 'layout/content';
+
+// *{
+//   outline: 1px solid rgba(red,0.2);
+// }
+
+body{
+  min-height:100vh;
+  // background-image: url('../src/images/grid.svg');
+  // background-image: url('../src/images/desktop.png');
+}
+
+// span{
+//   position:fixed;
+//   bottom:40px;
+//   right:80px;
+//   background:skyblue;
+//   color:white;
+//   padding:5px;
+// }
+
+
+

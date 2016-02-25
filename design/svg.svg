@@ -1,0 +1,8 @@
+<svg id="bounding" width="1000px" height="1000px">
+          <defs>
+            <pattern id="Pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+               <rect id="InnerPattern" x="0" y="0" width="20" height="20" fill="skyblue" stroke="black"/>
+            </pattern>
+           </defs>
+          <rect id="Rectangle-1" x="0" y="0" width="1000px" height="1000px" fill="url(#Pattern)" stroke="black" strokeWidth="2"></rect>
+        </svg> 
